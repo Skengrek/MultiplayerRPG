@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Classes/BasicStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+job_name = "Warrior"
+maxHealth = 100
+maxMana = 0
+strength = 10
+intelligence = 0
+agility = 5
+defense = 10
+speed = 5

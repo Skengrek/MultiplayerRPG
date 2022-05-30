@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/skills/Skill.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+skill_name = "Fire Ball"
+skill_description = "Launch a fire ball"
+cost = 5
+base_damage = 10
+critic_rate = 10

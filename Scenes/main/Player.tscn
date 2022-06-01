@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/main/Player.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/main/Class.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Main/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Spells/GrassBlade.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+SpellDeck = [ ExtResource( 2 ) ]
+SpellCD = [ true ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -16.0
 margin_top = -16.0
 margin_right = 16.0
 margin_bottom = 16.0
-color = Color( 0.803922, 0.0392157, 0.0392157, 1 )
+color = Color( 0.301961, 0.929412, 0.0470588, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -26,10 +28,12 @@ wait_time = 0.25
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Timers"]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
-[node name="Class" parent="." instance=ExtResource( 2 )]
+[node name="Spell1Cooldown" type="Timer" parent="Timers"]
+one_shot = true
 
 [connection signal="timeout" from="Timers/DashDuration" to="." method="_on_DashDuration_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_DashCooldown_timeout"]
+[connection signal="timeout" from="Timers/Spell1Cooldown" to="." method="_on_Spell1Cooldown_timeout"]

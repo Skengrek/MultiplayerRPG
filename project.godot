@@ -8,38 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Resource",
-"class": "BaseStats",
-"language": "GDScript",
-"path": "res://Scripts/Classes/BasicStats.gd"
-}, {
-"base": "Node",
-"class": "CharStats",
-"language": "GDScript",
-"path": "res://Scenes/main/Stats.gd"
-}, {
-"base": "Node",
-"class": "Class",
-"language": "GDScript",
-"path": "res://Scenes/main/Class.gd"
-}, {
-"base": "Resource",
-"class": "Skill",
-"language": "GDScript",
-"path": "res://Scripts/skills/Skill.gd"
-} ]
-_global_script_class_icons={
-"BaseStats": "",
-"CharStats": "",
-"Class": "",
-"Skill": ""
-}
-
 [application]
 
 config/name="MultiplayerRogueLike"
-run/main_scene="res://Scenes/main/Game.tscn"
+run/main_scene="res://Scenes/Main/Game.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -77,6 +49,19 @@ dash={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
+spell1={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="Obstacle"
+2d_physics/layer_4="Monster"
+2d_physics/layer_5="Spell"
 
 [physics]
 

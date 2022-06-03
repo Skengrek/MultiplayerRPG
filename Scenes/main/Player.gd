@@ -23,6 +23,7 @@ export (Array, bool) var SpellCD
 # Ready ########################################################################
 func _ready():
 	addSpell("res://Scenes/Spells/GrassBlade.tscn")
+	addSpell("res://Scenes/Spells/IceSpear.tscn")
 
 
 # Process ######################################################################
@@ -57,6 +58,8 @@ func processInput():
 	
 	if Input.is_action_pressed("spell1"):
 		useSpell(0)
+	if Input.is_action_pressed("spell2"):
+		useSpell(1)
 			
 	velocity = velocity.normalized() * speed
 

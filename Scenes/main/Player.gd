@@ -17,13 +17,16 @@ enum State {walking, dashing, stun, dead}
 var state = State.walking
 
 # Spells
-export (Array, PackedScene) var SpellDeck
-export (Array, bool) var SpellCD
+var SpellDeck = []
+var SpellCanBeCasted = []
 
 # Ready ########################################################################
 func _ready():
-	addSpell("res://Scenes/Spells/GrassBlade.tscn")
-	addSpell("res://Scenes/Spells/IceSpear.tscn")
+	SpellDeck.resize(4)
+	SpellCanBeCasted = [$Timers/Spell1, $Timers/Spell2, 
+						$Timers/Spell3, $Timers/Spell4]
+	addSpell("res://Scenes/Spells/GrassBlade.tscn", 0)
+	addSpell("res://Scenes/Spells/IceSpear.tscn", 1)
 
 
 # Process ######################################################################
@@ -64,17 +67,16 @@ func processInput():
 	velocity = velocity.normalized() * speed
 
 # Spells #######################################################################
-func addSpell(scenePath):
-	SpellDeck.append(load(scenePath))
-	SpellCD.append(true)
+func addSpell(scenePath, place):
+	SpellDeck[place] = load(scenePath)
 
 func useSpell(id):
-	if SpellCD[id]:
-			var newSpell = SpellDeck[id].instance()
-			newSpell.shoot(defineDirectionOfSpell(), global_position)
-			get_parent().add_child(newSpell)
-			SpellCD[0] = false
-			$Timers/Spell1Cooldown.start(newSpell.cooldown)
+	if not SpellCanBeCasted[id].time_left > 0:
+		var newSpell = SpellDeck[id].instance()
+		newSpell.shoot(defineDirectionOfSpell(), global_position)
+		get_parent().add_child(newSpell)
+		SpellCanBeCasted[id].wait_time = newSpell.cooldown
+		SpellCanBeCasted[id].start()
 
 
 func defineDirectionOfSpell():
@@ -111,5 +113,21 @@ func _on_DashCooldown_timeout():
 	canDash = true
 
 
-func _on_Spell1Cooldown_timeout():
-	SpellCD[0] = true
+func _on_Spell1_timeout():
+	pass
+	#SpellCanBeCasted[0] = true
+
+
+func _on_Spell2_timeout():
+	pass
+	#SpellCanBeCasted[1] = true.
+
+
+func _on_Spell3_timeout():
+	pass
+	#SpellCanBeCasted[2] = true
+
+
+func _on_Spell4_timeout():
+	pass
+	#SpellCanBeCasted[3] = true

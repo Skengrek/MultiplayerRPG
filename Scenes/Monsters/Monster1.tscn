@@ -16,6 +16,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
 shader = SubResource( 5 )
 shader_param/flash_color = Color( 1, 0, 0, 1 )
 shader_param/flash_modifier = 1.0

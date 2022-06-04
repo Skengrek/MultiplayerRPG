@@ -1,11 +1,11 @@
 extends Area2D
 
 export var speed:int = 250
-export var cooldown = 1
+export var cooldown:float = 1.0
+export var damage:int = 5
 
+var modifier = {'effect': 'speed', 'value':-10, 'duration': 10}
 var canCast = true
-var damage = 5
-
 var direction = Vector2.ZERO
 
 func shoot(newDirection, globalPosition):
@@ -26,7 +26,7 @@ func _process(delta):
 
 func _on_IceSpear_body_entered(body):
 	if body.has_method("processDamage"):
-		body.processDamage(damage)
+		body.processDamage(damage, modifier)
 		queue_free()
 
 

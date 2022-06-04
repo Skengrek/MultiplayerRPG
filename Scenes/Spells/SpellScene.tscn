@@ -10,5 +10,3 @@ position = Vector2( 18, 10 )
 position = Vector2( 39, 2 )
 
 [node name="IceSpear" parent="." instance=ExtResource( 2 )]
-
-[connection signal="body_entered" from="IceSpear" to="IceSpear" method="_on_IceSpear_body_entered"]

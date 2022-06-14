@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Spells/GrassBlade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/People/personnage1.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 7, 8 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -12,13 +13,17 @@ SpellDeck = [ ExtResource( 2 ) ]
 SpellCD = [ true ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -16.0
+margin_left = -6.0
 margin_top = -16.0
-margin_right = 16.0
+margin_right = 8.0
 margin_bottom = 16.0
 color = Color( 0.301961, 0.929412, 0.0470588, 1 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 8 )
 shape = SubResource( 1 )
 
 [node name="Timers" type="Node2D" parent="."]

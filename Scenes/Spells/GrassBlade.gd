@@ -1,7 +1,8 @@
 extends Node2D
 
-export var speed:int = 800
+export var speed:int = 500
 export var cooldown = 0.5
+export var maxDistance = 1000
 
 var damage = 10
 var projectile = load("res://Scenes/Spells/grassBladeProjectile.tscn")

@@ -22,4 +22,4 @@ func cast(newDirection, globalPosition, data):
 func _on_Area2D_body_entered(body):
 	if body.has_method("processDamage"):
 		body.processDamage(damage)
-		queue_free()
+	queue_free()

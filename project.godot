@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "BaseStats",
+"language": "GDScript",
+"path": "res://Scripts/Classes/BasicStats.gd"
+}, {
+"base": "Resource",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://Scripts/skills/Skill.gd"
+} ]
+_global_script_class_icons={
+"BaseStats": "",
+"Skill": ""
+}
+
 [application]
 
-config/name="MultiplayerRogueLike"
+config/name="MultiplayerRRG"
 run/main_scene="res://Scenes/Main/Game.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+name=false
 
 [importer_defaults]
 

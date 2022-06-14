@@ -9,8 +9,6 @@ extents = Vector2( 7, 8 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-SpellDeck = [ ExtResource( 2 ) ]
-SpellCD = [ true ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -6.0
@@ -36,9 +34,21 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Spell1Cooldown" type="Timer" parent="Timers"]
+[node name="Spell1" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Spell2" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Spell3" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Spell4" type="Timer" parent="Timers"]
 one_shot = true
 
 [connection signal="timeout" from="Timers/DashDuration" to="." method="_on_DashDuration_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_DashCooldown_timeout"]
-[connection signal="timeout" from="Timers/Spell1Cooldown" to="." method="_on_Spell1Cooldown_timeout"]
+[connection signal="timeout" from="Timers/Spell1" to="." method="_on_Spell1_timeout"]
+[connection signal="timeout" from="Timers/Spell2" to="." method="_on_Spell2_timeout"]
+[connection signal="timeout" from="Timers/Spell3" to="." method="_on_Spell3_timeout"]
+[connection signal="timeout" from="Timers/Spell4" to="." method="_on_Spell4_timeout"]

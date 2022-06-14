@@ -1240,8 +1240,6 @@ visible = false
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 131, 110 )
 collision_mask = 14
-SpellDeck = [  ]
-SpellCD = [  ]
 
 [node name="TileMap" type="TileMap" parent="YSort"]
 scale = Vector2( 2, 2 )

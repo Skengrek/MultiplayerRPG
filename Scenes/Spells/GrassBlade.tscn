@@ -54,4 +54,7 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
 
+[node name="Cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_GrassBlade_body_entered"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

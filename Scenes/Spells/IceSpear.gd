@@ -1,34 +1,19 @@
-extends Area2D
+extends Node2D
 
-export var speed:int = 250
+export var speed:int = 500
 export var cooldown:float = 1.0
 export var damage:int = 5
 
 var modifier = {'effect': 'speed', 'value':-10, 'duration': 10}
-var canCast = true
-var direction = Vector2.ZERO
 
-func shoot(newDirection, globalPosition):
-	visible = true
-	direction = newDirection
-	$Sprite.rotation_degrees = atan2(newDirection.y, newDirection.x) * 180 / PI
-	global_position = globalPosition
-	$AnimationPlayer.play('Fired')
-	
-	$Cooldown.wait_time = cooldown
-	$Cooldown.start()
-	canCast = false
-	
+var projectile = load("res://Scenes/Spells/IceSpearProjectile.tscn")
 
-func _process(delta):
-	var _moved = translate(speed*delta*direction)
-
-
-func _on_IceSpear_body_entered(body):
-	if body.has_method("processDamage"):
-		body.processDamage(damage, modifier)
-		queue_free()
-
-
-func _on_Cooldown_timeout():
-	canCast = true
+func cast(newDirection, globalPosition, scene):
+	var data = {'speed':speed, 'damage':damage, 'modifier':modifier}
+	var midAngle = atan2(newDirection.y, newDirection.x) * 180 / PI
+	for i in [-20, -10, 0, 10, 20]:
+		var newProj2 = projectile.instance()
+		var newAngle = (midAngle-i)*PI/180
+		newProj2.cast(Vector2(cos(newAngle), sin(newAngle)),
+		globalPosition, data)
+		scene.add_child(newProj2)

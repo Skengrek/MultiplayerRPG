@@ -4,8 +4,9 @@
 [ext_resource path="res://Scenes/Spells/IceSpear.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 71, 200 )
 
 [node name="IceSpear" parent="." instance=ExtResource( 2 )]
 
 [node name="GrassBlade" parent="." instance=ExtResource( 1 )]
-position = Vector2( 26, 33 )
+position = Vector2( -31, 125 )

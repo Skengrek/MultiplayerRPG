@@ -73,8 +73,7 @@ func addSpell(scenePath, place):
 func useSpell(id):
 	if not SpellCanBeCasted[id].time_left > 0:
 		var newSpell = SpellDeck[id].instance()
-		newSpell.shoot(defineDirectionOfSpell(), global_position)
-		get_parent().add_child(newSpell)
+		newSpell.cast(defineDirectionOfSpell(), global_position, get_parent())
 		SpellCanBeCasted[id].wait_time = newSpell.cooldown
 		SpellCanBeCasted[id].start()
 

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var life:int = 10
+export var life:int = 20
 export var speed:int = 200
 
 var effectParticle = {
@@ -18,7 +18,6 @@ func _ready():
 
 func _process(delta):
 	var _speed = speed * modifier['speed']['value']/100
-	print(modifier['speed']['value'])
 	if modifier['speed']['value'] < 0:
 		modifier['speed']['duration'] -= delta
 		if modifier['speed']['duration'] <= 0:
@@ -32,3 +31,9 @@ func processDamage(damage, spellModif=null):
 	if spellModif:
 		modifier[spellModif['effect']]['value'] = spellModif['value']
 		modifier[spellModif['effect']]['duration'] = float(spellModif['duration'])
+	life -= damage
+	if life <= 0:
+		death()
+
+func death():
+	queue_free()

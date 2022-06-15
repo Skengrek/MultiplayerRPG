@@ -1,15 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Effects/light.png" type="Texture" id=2]
 [ext_resource path="res://Assets/People/personnage1.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 8 )
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -8, -17, 6, -17, 6, 15, -8, 15 )
-
-[sub_resource type="CameraTexture" id=3]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -50,12 +46,14 @@ one_shot = true
 [node name="Spell4" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2( 2, 1 )
-occluder = SubResource( 2 )
-
 [node name="Light2D" type="Light2D" parent="."]
-texture = SubResource( 3 )
+position = Vector2( 0, 18 )
+texture = ExtResource( 2 )
+energy = 0.5
+range_z_min = -512
+range_z_max = 512
+shadow_enabled = true
+shadow_color = Color( 0.905882, 0.32549, 0.32549, 0 )
 
 [connection signal="timeout" from="Timers/DashDuration" to="." method="_on_DashDuration_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_DashCooldown_timeout"]
